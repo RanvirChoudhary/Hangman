@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+body{
+  margin: 0%;
+  padding: 0%;
+  display: grid;
+  place-items: center center;
+  font-family: "Lato", sans-serif;
+  /* background: url("background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background-color: white;
+}
+
+a{
+  display: grid;
+  place-items: center center;
+  padding: 10px;
+  margin: 0%;
+  height: 4em;
+  width: 10em;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.2cm;
+  text-align: center;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0 ,0.3);
+}
+
+a:link,
+a:visited{
+  text-decoration: none;
+}
