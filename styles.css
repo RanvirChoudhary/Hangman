@@ -6,6 +6,7 @@ body{
   display: grid;
   place-items: center center;
   font-family: "Lato", sans-serif;
+  grid-template-rows: auto 200px 100px auto;
   /* background: url("background.jpg");
   background-repeat: no-repeat;
   background-size: cover; */
@@ -28,4 +29,10 @@ a{
 a:link,
 a:visited{
   text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  background-color: black;
+  color: white;
 }
