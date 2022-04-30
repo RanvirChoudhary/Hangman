@@ -1,19 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
 body{
   margin: 0%;
   padding: 0%;
+  font-family: "Lato", sans-serif;
 }
 
 .wrapper{
   display: grid;
   place-items: center;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 2fr 2fr;
+  grid-template-rows: 1fr 2fr;
   grid-template-areas: 
-              "image incorrect-words incorrect-words"
+              "image incorrect-words ."
               "image guesses guesses";
 }
 
+.UnderlineText{
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 1cm;
+  height: 1cm;
+  font-size: 1.5em;
+  text-align: center;
+  border-bottom: 3px solid black;
+}
+
 .incorrect-words-wrapper{
+  font-size: 1.5em;
   grid-area: incorrect-words;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -29,6 +43,7 @@ body{
 
 .Incorrect-Guess-Title{
   grid-area: Title;
+  margin-left: 10px;
 }
 
 .letter-wrapper{
