@@ -4,16 +4,19 @@ body{
   margin: 0%;
   padding: 0%;
   font-family: "Lato", sans-serif;
+  background-color: beige;
 }
 
 .wrapper{
   display: grid;
-  place-items: center;
+  /* place-items: center; */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 2fr;
   grid-template-areas: 
+
               "image incorrect-words ."
-              "image guesses guesses";
+              "image guesses .";
+  gap: 50px 100px;
 }
 
 .UnderlineText{
@@ -28,17 +31,30 @@ body{
 
 .incorrect-words-wrapper{
   font-size: 1.5em;
+  margin-top: 50px; 
   grid-area: incorrect-words;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 2fr 2fr;
   grid-template-areas: 
-                  "Title Title Title Title Title Title Title Title"
-                  "letter1 letter2 letter3 letter4 letter5 letter6 letter7 letter8";
+                  "Title Title Title Title Title Title Title Title";
+}
+
+.letter-wrapper{
+  font-size: 1.5em;
+  grid-area: guesses;
+  display: grid;
+  grid-template-columns: repeat(8, 0.2fr);
+  grid-template-rows: repeat(2, 100px);
+  grid-template-areas: 
+                  "Title Title Title Title Title Title Title Title";
 }
 
 .hangman-pic{
   grid-area: image;
+  margin-top: -150px;
+  display: grid;
+  place-items: center;
 }
 
 .Incorrect-Guess-Title{
@@ -46,38 +62,7 @@ body{
   margin-left: 10px;
 }
 
-.letter-wrapper{
-  grid-area: guesses;
-}
-
-.incorrect-word1{
-  grid-area: letter1;
-}
-
-.incorrect-word2{
-  grid-area: letter2;
-}
-
-.incorrect-word3{
-  grid-area: letter3;
-}
-
-.incorrect-word4{
-  grid-area: letter4;
-}
-
-.incorrect-word5{
-  grid-area: letter5;
-}
-
-.incorrect-word6{
-  grid-area: letter6;
-}
-
-.incorrect-word7{
-  grid-area: letter7;
-}
-
-.incorrect-word8{
-  grid-area: letter8;
+.Letter-title{
+  grid-area: Title;
+  margin-left: 10px;
 }
