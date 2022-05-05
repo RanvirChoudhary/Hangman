@@ -1,4 +1,5 @@
 let WordToGuess;
+const wordsGuessed = document.querySelectorAll(".letter")
 
 async function extractData(random) {
   const response = await fetch("./words.txt");
@@ -17,13 +18,17 @@ function InputHandler() {
   window.addEventListener("keypress", (e) => {
     WordToGuess.forEach(element => {
       if (element === e.key) {
-        console.log("correct key!");
+        console.log(WordToGuess.indexOf(element))
+        // console.log("hahaha")
+        // wordsGuessed[WordToGuess.indexOf(e.key)].textContent = e.key
       } else {                                 //this code executes every 8 times, because
         console.log("wrong key!");           //you are using forEach for every element of the array so
       }                                    //every element that is wrong, the code is executed. this must be fixed
     });                                  //but right now, it's time for a break
   }); 
 }
+
+console.log(wordsGuessed)
 
 extractData(GenRandom(276))
   .then(InputHandler)
