@@ -1,6 +1,9 @@
 let WordToGuess;
+let counter = 0;
 const wordsGuessed = document.querySelectorAll(".letter");
 const guessedWrong = document.querySelectorAll(".incorrect-guess");
+const Image = document.getElementById("Picture")
+// guessedWrong[0].textContent = "j"
 
 async function extractData(random) {
   const response = await fetch("./words.txt");
@@ -21,28 +24,23 @@ function InputHandler() {
     for (let letter of WordToGuess) {
       if (letter === e.key) {
         templateGuessed.push(true);
-        console.log(templateGuessed);
-        // wordsGuessed[WordToGuess.indexOf(e.key)].textContent = e.key
       } else {
-        //this code executes every 8 times, because
-        //you are using forEach for every element of the array so
-        //every element that is wrong, the code is executed. this must be fixed
-        // turns out this code being executed more than one time proved to be in your favour lol
         templateGuessed.push(false);
-        console.log(templateGuessed);
       }
     }
     for (let i = 0; i < templateGuessed.length; i++) {
       const truth = templateGuessed[i];
-      if(truth === true){
-        wordsGuessed[i].textContent = e.key
-        console.log("hello")
+      if (truth === true) {
+        wordsGuessed[i].textContent = e.key;
       }
+    }
+    if (WordToGuess.includes(e.key) === false){
+      guessedWrong[counter].textContent = e.key;
+      Image.src = `../Assets/Stage${counter}.svg`
+      counter++
     }
   });
 }
-
-console.log(wordsGuessed);
 
 extractData(GenRandom(276))
   .then(InputHandler)
