@@ -11,7 +11,7 @@ body{
   display: grid;
   /* place-items: center; */
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas: 
 
               "image incorrect-words ."
@@ -52,7 +52,8 @@ body{
 
 .hangman-pic{
   grid-area: image;
-  margin-top: -150px;
+  height: inherit;
+  /* margin-top: -150px; */
   display: grid;
   place-items: center;
 }
@@ -65,4 +66,12 @@ body{
 .Letter-title{
   grid-area: Title;
   margin-left: 10px;
+}
+
+.modal-you-win{
+  display: none;
+}
+
+.modal-you-lose{
+  display: none;
 }

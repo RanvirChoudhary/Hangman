@@ -30,11 +30,20 @@
       <h1 class = "letter UnderlineText"></h1>
       <h1 class = "letter UnderlineText"></h1>
     </div>
-    <div class = "hangman-pic">
+    <div width = "512" height = "512" class = "hangman-pic">
       <img id = "Picture" src="../Assets/Bg.png" width = "512" height = "512" alt="Hangman Picture">
     </div>
   </div>
-  <a href="../index.html">this button is for debugging and to go back to the other html page</a>
+  <div  id = "modal-you-win" class = "modal-you-win">
+    <h1>🎉Congrats!🎉</h1>
+    <h2>You Won!</h2>
+    <button>Play Again!</button>
+  </div>
+  <div id = "modal-you-lose" class = "modal-you-lose">
+    <h1>Hate to break it to you but...</h1>
+    <h2>You Lose!</h2>
+    <button>Play Again!</button>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>
