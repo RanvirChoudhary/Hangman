@@ -69,7 +69,26 @@ body{
 }
 
 .modal-you-win{
-  display: none;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-areas: ". . ."
+                       ". content ."
+                       ". . .";
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  z-index: 1; /* Sit on top */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-top: -200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content{
+  grid-area: center;
 }
 
 .modal-you-lose{
