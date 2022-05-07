@@ -1,14 +1,16 @@
 let WordToGuess;
 let counter = 0;
+let WonOrLost = "Playing";
+let letterBlacklist = [];
+let BtnPlayAgain = document.getElementById("button-play-again")
 let wordsGuessed = document.querySelectorAll(".letter");
 let guessedWrong = document.querySelectorAll(".incorrect-guess");
 const Image = document.getElementById("Picture");
 const modalVictory = document.getElementById("modal-you-win");
 const modalLoss = document.getElementById("modal-you-lose");
-let letterBlacklist = [];
+
 wordsGuessed = Array.from(wordsGuessed);
 guessedWrong = Array.from(guessedWrong);
-let WonOrLost = "Playing";
 
 async function extractData(random) {
   const response = await fetch("./words.txt");
@@ -23,7 +25,6 @@ function GenRandom(multiplier) {
 }
 
 function InputHandler() {
-  console.log(WordToGuess);
   window.addEventListener("keypress", (e) => {
     if(WonOrLost === "Playing"){
       let templateGuessed = [];
@@ -49,15 +50,19 @@ function InputHandler() {
         }
       }
       if (wordsGuessed.every(element => element.textContent !== "")) {
-        modalVictory.style.display = "block"
+        modalVictory.classList.remove("hidden")
         WonOrLost = "Won"
       } 
-      if (counter === 7) {
-        modalLoss.style.display = "flex"
+      if (counter === 8) {
+        modalLoss.classList.remove("hidden")
+        console.log(counter)
         WonOrLost = "Lost"
       } 
     }
   });
+  BtnPlayAgain.addEventListener("click", e => {
+    location.reload()
+  })
 }
 
 extractData(GenRandom(276))
