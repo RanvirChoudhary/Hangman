@@ -27,7 +27,6 @@ function GenRandom(multiplier) {
 }
 
 function Main() {
-  console.log(WordToGuess)
   window.addEventListener("keypress", (e) => {
     let keyPressed = e.key.toLowerCase()
     if (WonOrLost === "Playing") {
@@ -60,6 +59,7 @@ function Main() {
       if (counter === 8) {
         WordRevealedH2Element.textContent = `The Word was: '${WordToGuess.join("")}'`
         modalLoss.classList.remove("hidden");
+        console.log("🌈🌈🎉🎉🌈🌈 lmao you lost also congrats on finding the easter egg! 🌈🌈🎉🎉🌈🌈")
         WonOrLost = "Lost";
       }
     }
