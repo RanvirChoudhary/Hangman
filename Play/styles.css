@@ -135,6 +135,11 @@ body{
 
 }
 
+.you-win,
+.you-lose{
+  font-size: 29;
+}
+
 .hidden{
   display: none;
 }

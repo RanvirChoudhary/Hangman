@@ -2,12 +2,14 @@ let WordToGuess;
 let counter = 0;
 let WonOrLost = "Playing";
 let letterBlacklist = [];
-let BtnPlayAgain = document.getElementById("button-play-again")
+let BtnPlayAgainWin = document.getElementById("button-play-again-win");
+let BtnPlayAgainLose = document.getElementById("button-play-again-lose");
 let wordsGuessed = document.querySelectorAll(".letter");
 let guessedWrong = document.querySelectorAll(".incorrect-guess");
 const Image = document.getElementById("Picture");
 const modalVictory = document.getElementById("modal-you-win");
 const modalLoss = document.getElementById("modal-you-lose");
+const WordRevealedH2Element = document.getElementById("word-revealed")
 
 wordsGuessed = Array.from(wordsGuessed);
 guessedWrong = Array.from(guessedWrong);
@@ -24,12 +26,14 @@ function GenRandom(multiplier) {
   return random;
 }
 
-function InputHandler() {
+function Main() {
+  console.log(WordToGuess)
   window.addEventListener("keypress", (e) => {
-    if(WonOrLost === "Playing"){
+    let keyPressed = e.key.toLowerCase()
+    if (WonOrLost === "Playing") {
       let templateGuessed = [];
       for (let letter of WordToGuess) {
-        if (letter === e.key) {
+        if (letter === keyPressed) {
           templateGuessed.push(true);
         } else {
           templateGuessed.push(false);
@@ -38,35 +42,36 @@ function InputHandler() {
       for (let i = 0; i < templateGuessed.length; i++) {
         const truth = templateGuessed[i];
         if (truth) {
-          wordsGuessed[i].textContent = e.key;
+          wordsGuessed[i].textContent = keyPressed;
         }
       }
-      if (WordToGuess.includes(e.key) === false) {
-        if (!letterBlacklist.includes(e.key) && isNaN(e.key)) {
-          guessedWrong[counter].textContent = e.key;
+      if (WordToGuess.includes(keyPressed) === false) {
+        if (!letterBlacklist.includes(keyPressed) && isNaN(keyPressed)) {
+          guessedWrong[counter].textContent = keyPressed;
           Image.src = `../Assets/Stage${counter}.svg`;
-          letterBlacklist.push(e.key);
+          letterBlacklist.push(keyPressed);
           counter++;
         }
       }
-      if (wordsGuessed.every(element => element.textContent !== "")) {
-        modalVictory.classList.remove("hidden")
-        WonOrLost = "Won"
-      } 
+      if (wordsGuessed.every((element) => element.textContent !== "")) {
+        modalVictory.classList.remove("hidden");
+        WonOrLost = "Won";
+      }
       if (counter === 8) {
-        modalLoss.classList.remove("hidden")
-        console.log(counter)
-        WonOrLost = "Lost"
-      } 
+        WordRevealedH2Element.textContent = `The Word was: '${WordToGuess.join("")}'`
+        modalLoss.classList.remove("hidden");
+        WonOrLost = "Lost";
+      }
     }
   });
-  BtnPlayAgain.addEventListener("click", e => {
-    location.reload()
-  })
+  BtnPlayAgainWin.addEventListener("click", (e) => {
+    location.reload();
+  });
+  BtnPlayAgainLose.addEventListener("click", (e) => {
+    location.reload();
+  });
 }
 
 extractData(GenRandom(276))
-  .then(InputHandler)
+  .then(Main)
   .catch(() => console.log());
-
-
